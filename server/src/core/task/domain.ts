@@ -20,24 +20,23 @@ export class TaskDomain {
   }
 
   public createTask(input: Partial<Task>) {
-    console.log('oi', input)
     return this.taskService.create(input).then((task) => {
-      console.log('ahsudihasdiuashd', input)
-      pubsub.publish(channels.ADDED, { [channels.ADDED]: task })
+      console.log('ta passando aqui de buenas', task)
+      pubsub.publish(channels.ADDED, { taskAdded: task })
       return task
     })
   }
 
   public editTask(id: number, input: Partial<Task>) {
     return this.taskService.edit(id, input).then((user) => {
-      pubsub.publish(channels.EDITED, { [channels.EDITED]: user })
+      pubsub.publish(channels.EDITED, { taskEdited: user })
       return user
     })
   }
 
   public deleteTask(id: number) {
     return this.taskService.delete(id).then(() => {
-      pubsub.publish(channels.DELETED, { [channels.DELETED]: id })
+      pubsub.publish(channels.DELETED, { taskDeleted: id })
       return id
     })
   }

@@ -4,6 +4,7 @@ import { createAppContainer, createStackNavigator, createSwitchNavigator } from 
 import { Login } from '../features/auth/scenes/Login';
 import { BootstrapContainer } from '../core/bootstrap/BootstrapContainer';
 import { HomeScreen } from '../features/hello/scenes/Hello';
+import { Tasks } from '../features/tasks/Tasks';
 
 class OtherScreen extends Component {
   public render() {
@@ -16,7 +17,7 @@ class OtherScreen extends Component {
   }
 }
 
-const AppStack = createStackNavigator({ Home: HomeScreen, Other: OtherScreen })
+const AppStack = createStackNavigator({ Home: Tasks, Other: OtherScreen })
 const AuthStack = createStackNavigator({ Login })
 
 export const Navigation = createAppContainer(createSwitchNavigator(

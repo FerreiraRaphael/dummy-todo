@@ -20,8 +20,8 @@ export class TaskService {
 
   public async edit(id: number, input: Partial<Task>) {
     const user = await this.taskRepository.findOne({id})
-    user.text = input.text || user.text
-    user.completed = input.completed || user.completed
+    user.text = input.text
+    user.completed = input.completed
     return this.taskRepository.save(user)
   }
 

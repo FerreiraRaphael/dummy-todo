@@ -56,7 +56,7 @@ class Server {
   public listen(port?: number) {
     const server = createServer(this.expressApp)
     return new Promise((res, rej) => {
-      server.listen( process.env.PORT || port || this.port, (err) => {
+      server.listen( 3001, (err) => {
         if (err) {
           return rej(err)
         }
