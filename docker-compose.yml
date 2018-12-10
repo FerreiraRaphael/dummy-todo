@@ -7,22 +7,22 @@ volumes:
 
 services:
 
-  # api:
-  #   build:
-  #     context: server
-  #     dockerfile: dev.Dockerfile
-  #     args:
-  #       NODE_VERSION:
-  #       APP_VERSION:
-  #   volumes:
-  #     - ./server:/home/app
-  #   links:
-  #     - postgres:postgres.local
-  #   ports:
-  #     - 3001:3001
-  #   depends_on:
-  #     - postgres
-  #     - redis
+  api:
+    build:
+      context: server
+      dockerfile: dev.Dockerfile
+      args:
+        NODE_VERSION:
+        APP_VERSION:
+    volumes:
+      - ./server:/home/app
+    links:
+      - postgres:postgres.local
+    ports:
+      - 3001:3001
+    depends_on:
+      - postgres
+      - redis
 
   postgres:
     image: postgres

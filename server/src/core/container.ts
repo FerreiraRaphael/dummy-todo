@@ -1,6 +1,7 @@
 import { Container } from 'inversify'
 import { AuthModule } from './auth/module'
 import { HelloModule } from './hello/module'
+import { TaskModule } from './task/module'
 import User from './user/entity'
 import { UserModule } from './user/module'
 
@@ -23,7 +24,7 @@ interface ICreateContainerInput {
 export function createContainer({secret}: ICreateContainerInput) {
   const container = new Container({ defaultScope: 'Singleton' })
 
-  container.load(HelloModule, UserModule, AuthModule)
+  container.load(HelloModule, UserModule, AuthModule, TaskModule)
 
   container.bind<string>('JwtSecret').toConstantValue(secret)
 
