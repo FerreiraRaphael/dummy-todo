@@ -20,7 +20,9 @@ export class TaskDomain {
   }
 
   public createTask(input: Partial<Task>) {
+    console.log('oi', input)
     return this.taskService.create(input).then((task) => {
+      console.log('ahsudihasdiuashd', input)
       pubsub.publish(channels.ADDED, { [channels.ADDED]: task })
       return task
     })

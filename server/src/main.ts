@@ -48,7 +48,7 @@ class Server {
     this.expressApp = express()
   }
 
-  public setPort(port = 3000) {
+  public setPort(port: number) {
     this.port = port
     return this
   }

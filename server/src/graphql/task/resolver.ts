@@ -11,8 +11,10 @@ export const resolver = {
     tasks: (_, args, { container }: IGraphqlContext) => taskDomain(container).tasks(),
   },
   Mutation: {
-    createTask: (_, { task }: { task: Partial<Task> }, { container }: IGraphqlContext) =>
-      taskDomain(container).createTask(task),
+    createTask: (_, { task }: { task: Partial<Task> }, { container }: IGraphqlContext) =>{
+      console.log('tamo aqui', task)
+      return taskDomain(container).createTask(task)
+    },
     editTask: (
       _,
       { id, task }: { id: number; task: Partial<Task> },

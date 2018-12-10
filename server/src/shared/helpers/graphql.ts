@@ -10,6 +10,7 @@ const prod = process.env.NODE_ENV === 'production'
 
 export async function createSchema() {
   const { schema, resolver } = glue('src/graphql', { mode: prod ? 'js' : 'ts' })
+  console.log('vamos ver o q ele conseguiu ne', schema, resolver)
   return makeExecutableSchema({
     typeDefs: schema,
     resolvers: resolver,
