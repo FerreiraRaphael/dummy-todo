@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { Container } from 'inversify'
-import { AuthService } from 'src/core/auth/service'
+import { AuthService } from '../../src/core/auth/service'
 
 interface ILoginRouteInput {
   container: Container

@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify'
-import { pubsub } from 'src/shared/helpers/subscriptions'
+import { pubsub } from '../../../src/shared/helpers/subscriptions'
 import { Task } from './entity'
 import { TaskService } from './service'
 

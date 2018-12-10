@@ -6,14 +6,18 @@
     "removeComments": true,
     "noLib": false,
     "allowSyntheticDefaultImports": true,
-    "target": "esnext",
+    "target": "es6",
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": ".",
     "lib": ["esnext"],
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "paths": {
+      "src": ["./src"]
+    }
   },
   "exclude": [
     "node_modules"

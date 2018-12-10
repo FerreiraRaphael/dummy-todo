@@ -1,8 +1,8 @@
 import * as express from 'express'
 import { Container } from 'inversify'
-import { AuthService } from 'src/core/auth/service'
-import User from 'src/core/user/entity'
-import { UserService } from 'src/core/user/service'
+import { AuthService } from '../../../src/core/auth/service'
+import User from '../../../src/core/user/entity'
+import { UserService } from '../../../src/core/user/service'
 
 export const calculateToken = (req: express.Request) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {

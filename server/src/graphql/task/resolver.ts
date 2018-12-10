@@ -1,7 +1,7 @@
 import { Container } from 'inversify'
 import { channels, TaskDomain } from 'src/core/task/domain'
 import { Task } from 'src/core/task/entity'
-import { pubsub } from 'src/shared/helpers/subscriptions'
+import { pubsub } from '../../../src/shared/helpers/subscriptions'
 import { IGraphqlContext } from '../context'
 
 const taskDomain = (container: Container) => container.get(TaskDomain)
