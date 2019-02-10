@@ -17,6 +17,6 @@ export async function createSchema() {
 
 export function createContext(req: Request, container: Container) {
   return {
-    container: bindCurrentUser(container, createCurrentUserFunction(req, container))
+    container: bindCurrentUser(container, createCurrentUserFunction(req, container)),
   }
 }

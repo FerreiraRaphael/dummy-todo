@@ -5,7 +5,6 @@ import { UserService } from '../user/service'
 
 @injectable()
 export class AuthService {
-
   public static authError() {
     return new AuthenticationError('Invalid email or password')
   }
@@ -17,15 +16,15 @@ export class AuthService {
 
   public async login(email: string, password: string) {
     const user = await this.userService.findUserBy({ email })
-    if(!user) {
+    if (!user) {
       throw AuthService.authError()
     }
-    if(user.password !== password ) {
+    if (user.password !== password) {
       throw AuthService.authError()
     }
     return this.createToken({
       id: user.id,
-      version: user.version
+      version: user.version,
     })
   }
 
@@ -33,12 +32,12 @@ export class AuthService {
     try {
       const user = await jwt.verify(token, this.secret)
       return Promise.resolve(user)
-    } catch(e) {
+    } catch (e) {
       return Promise.resolve({})
     }
   }
 
-  private createToken(user: {id: number, version: string}) {
+  private createToken(user: { id: number; version: string }) {
     return jwt.sign({ ...user }, this.secret)
   }
 }

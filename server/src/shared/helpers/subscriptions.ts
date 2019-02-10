@@ -36,5 +36,4 @@ export function createSubscriptionServer({
   )
 }
 
-
 export const pubsub = new PubSub()

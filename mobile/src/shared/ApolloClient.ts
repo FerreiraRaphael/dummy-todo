@@ -6,22 +6,24 @@ import { HttpLink } from 'apollo-link-http'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
 import { AsyncStorage } from 'react-native'
-import { TOKEN_KEY } from '../core/auth/TokenContext';
+import { TOKEN_KEY } from '../core/auth/TokenContext'
 
 const bearerLink = setContext(async (operation, context) => {
   const token = await AsyncStorage.getItem(TOKEN_KEY)
-  console.log('bearerLink', token)
   return token ? {
     ...context,
     headers: { Authorization: `Bearer ${token}` },
   } : context
 })
 
+const host = '192.168.0.7'
+
 const wsLink = new WebSocketLink({
-  uri: 'ws://192.168.56.1:3001/subscriptions',
+  uri: `http://${host}:3001/subscriptins`,
   options: {
     reconnect: true,
     connectionParams: new Promise(async (res) => {
+      console.log('tentando subs')
       const token = await AsyncStorage.getItem(TOKEN_KEY)
       return res( token ? {
         Authorization: `Bearer ${token}`,
@@ -38,7 +40,7 @@ const link = split(
     return kind === 'OperationDefinition' && operation === 'subscription'
   },
   wsLink,
-  new HttpLink({ uri: 'http://192.168.56.1:3001/graphql' }),
+  new HttpLink({ uri: `http://${host}:3001/graphql` }),
 )
 
 export const client = new ApolloClient({

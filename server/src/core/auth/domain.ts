@@ -8,11 +8,10 @@ export interface LoginInput {
 
 @injectable()
 export class AuthDomain {
-
   @inject(AuthService)
   private authService: AuthService
 
-  public login({email, password}: LoginInput) {
+  public login({ email, password }: LoginInput) {
     return this.authService.login(email, password)
   }
 }

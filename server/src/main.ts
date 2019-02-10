@@ -18,7 +18,7 @@ import { createSubscriptionServer } from './shared/helpers/subscriptions'
 
 const DEFAULT_SECRET = 'totally-unguessable-jwt-secret'
 
-class Server {
+export class Server {
   public static async create() {
     const server = new Server()
     server.schema = await createSchema()
@@ -35,7 +35,7 @@ class Server {
   private port = 3001
 
   private paths = {
-    root: `localhost:${this.port}`,
+    root: () =>`localhost:${this.port}`,
     login: '/login',
     graphql: '/graphql',
     graphiql: '/graphiql',
@@ -46,11 +46,6 @@ class Server {
 
   private constructor() {
     this.expressApp = express()
-  }
-
-  public setPort(port = 3000) {
-    this.port = port
-    return this
   }
 
   public listen(port?: number) {
@@ -66,13 +61,13 @@ class Server {
           schema: this.schema,
           container: this.container,
         })
-        const path = `http://${this.paths.root}`
+        const path = `http://${this.paths.root()}`
         winston.log('info', `Server initiated in ${path}`)
         winston.log('info', `GraphqlServer initiated in ${path}${this.paths.graphql}`)
         winston.log('info', `Graphiql initiated in ${path}${this.paths.graphiql}`)
         winston.log(
           'info',
-          `Subscriptions initiated in ws://${this.paths.root}${this.paths.subscriptions}`,
+          `Subscriptions initiated in ws://${this.paths.root()}${this.paths.subscriptions}`,
         )
         res()
       })
@@ -80,7 +75,6 @@ class Server {
   }
 
   private createRoutes({ schema }) {
-
     this.expressApp.use(
       cors(),
       bodyParser.json(),
@@ -114,8 +108,6 @@ export const launchServer = async () => {
   return server.listen()
 }
 
-if (module.parent) {
-  module.exports = { Server }
-} else {
+if (!module.parent) {
   launchServer()
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import { Component } from 'react'
 import { StyleSheet, View, ViewStyle } from 'react-native'
 
-class DummyClass extends Component {
+interface Props {}
+
+class DummyClass extends Component<Props> {
   render() {
     return <View style={styles.container} />
   }

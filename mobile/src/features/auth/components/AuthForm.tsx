@@ -67,6 +67,6 @@ interface Style {
 
 const styles = StyleSheet.create<Style>({
   input: {
-    width: "100%"
+    width: '100%'
   },
 })

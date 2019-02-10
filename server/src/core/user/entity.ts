@@ -12,7 +12,7 @@ export default class User {
   public name: string
 
   @Column({
-    unique: true
+    unique: true,
   })
   public email: string
 

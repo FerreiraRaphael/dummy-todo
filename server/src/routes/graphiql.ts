@@ -95,7 +95,9 @@ export function createGraphiQlRoute({ graphQlPath, subscriptionsPath }: ICreateG
     })),
   )
 
-  router.use('/ping', (req, res) => { res.json('pong') })
+  router.use('/ping', (req, res) => {
+    res.json('pong')
+  })
 
   return router
 }

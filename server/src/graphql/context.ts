@@ -1,5 +1,5 @@
 import { Container } from 'inversify'
 
-export interface IGraphqlContext {
+export interface GraphqlContext {
   container: Container
 }

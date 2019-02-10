@@ -1,6 +1,6 @@
-import React from 'react'
 import gql from 'graphql-tag'
-import { Mutation, MutationProps, MutationResult, MutationFn } from 'react-apollo'
+import React from 'react'
+import { Mutation, MutationFn, MutationProps, MutationResult } from 'react-apollo'
 
 const LOGIN = gql`
   mutation login($email: String!, $password: String!) {

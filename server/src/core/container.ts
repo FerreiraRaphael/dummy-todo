@@ -20,7 +20,7 @@ interface ICreateContainerInput {
   secret: string
 }
 
-export function createContainer({secret}: ICreateContainerInput) {
+export function createContainer({ secret }: ICreateContainerInput) {
   const container = new Container({ defaultScope: 'Singleton' })
 
   container.load(HelloModule, UserModule, AuthModule)

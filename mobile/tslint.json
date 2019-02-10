@@ -14,7 +14,8 @@
     "no-object-literal-type-assertion": false,
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
-    "quotemark": [true, "single", "avoid-escape", "jsx-double"],
+    "jsx-no-multiline-js": false,
+    "quotemark": [true, "single", "avoid-escape", "jsx-double"]
   },
   "rulesDirectory": []
 }

@@ -5,7 +5,6 @@ import { UserRepository } from './repository'
 
 @injectable()
 export class UserService {
-
   private userRepository: UserRepository
 
   constructor(userRepository: UserRepository) {

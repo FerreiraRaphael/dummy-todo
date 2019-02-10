@@ -3,7 +3,6 @@ import { HelloService } from './service'
 
 @injectable()
 export class HelloDomain {
-
   private helloService: HelloService
 
   constructor(helloService: HelloService) {

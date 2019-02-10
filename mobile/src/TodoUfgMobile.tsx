@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Navigation } from './shared/Navigation'
 import { ApolloProvider } from 'react-apollo'
+import { TokenProvider } from './core/auth/TokenContext'
+import { LoadingProvider } from './core/loading/LoadingContext'
 import { client } from './shared/ApolloClient'
 import { Layout } from './shared/Layout'
-import { LoadingProvider } from './core/loading/LoadingContext'
-import { TokenProvider } from './core/auth/TokenContext'
+import { Navigation } from './shared/Navigation'
 
 import Reactotron from 'reactotron-react-native'
 

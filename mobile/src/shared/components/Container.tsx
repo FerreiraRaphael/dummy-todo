@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, ViewProps, ViewStyle } from 'react-native'
-import { theme } from '../theme/theme';
+import { theme } from '../theme/theme'
 
 export interface Props extends ViewProps {
   center?: boolean

@@ -16,7 +16,7 @@ export function createLoginRoute({ container }: ILoginRouteInput) {
       return res.json({ token })
     } catch (e) {
       return res.status(401).json({
-        errors: [ e.message ]
+        errors: [e.message],
       })
     }
   })

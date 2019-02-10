@@ -2,5 +2,7 @@
   "extends": ["../packages/tslint-config/tslint.json"],
   "linterOptions": {
     "exclude": ["node_modules/**/*.ts", "coverage/lcov-report/*.js"]
+  },
+  "rules": {
   }
 }

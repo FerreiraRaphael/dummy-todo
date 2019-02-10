@@ -1,9 +1,9 @@
 import React from 'react'
 import { Component, createContext } from 'react'
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native'
 
 export interface TokenContextOutput {
-  token: string,
+  token: string
   setToken: (token: string) => void
 }
 
@@ -11,22 +11,21 @@ export const TOKEN_KEY = 'token'
 
 export const TokenContext = createContext<TokenContextOutput>({
   token: '',
-  setToken: () => {}
+  setToken: () => null,
 })
 
 interface State {
   token: string
 }
 
-
 export class TokenProvider extends Component<{}, State> {
   state: State = {
-    token: ''
+    token: '',
   }
 
   async componentDidMount() {
     const token = await AsyncStorage.getItem(TOKEN_KEY)
-    if(token) {
+    if (token) {
       this.setState({ token })
     }
   }
@@ -38,10 +37,10 @@ export class TokenProvider extends Component<{}, State> {
 
   render() {
     return (
-      <TokenContext.Provider {...this.props} value={{
-        token: this.state.token,
-        setToken: this.setToken,
-      }} />
+      <TokenContext.Provider
+        {...this.props}
+        value={{ token: this.state.token, setToken: this.setToken }}
+      />
     )
   }
 }

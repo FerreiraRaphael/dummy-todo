@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation'
-import { Login } from '../features/auth/scenes/Login';
-import { BootstrapContainer } from '../core/bootstrap/BootstrapContainer';
-import { HomeScreen } from '../features/hello/scenes/Hello';
+import { BootstrapContainer } from '../core/bootstrap/BootstrapContainer'
+import { Login } from '../features/auth/scenes/Login'
+import { HomeScreen } from '../features/hello/scenes/Hello'
 
 class OtherScreen extends Component {
   public render() {
