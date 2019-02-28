@@ -1,24 +1,29 @@
-// import { INestApplication } from '@nestjs/common'
-// import { Test } from '@nestjs/testing'
+import * as express from 'express'
 import * as request from 'supertest'
-// import { AppModule } from '../src/app.module'
+import { Server } from '../src/main'
 
 describe('AppController (e2e)', () => {
-  // let app: INestApplication
+  let app: express.Application
 
   beforeAll(async () => {
-    // const moduleFixture = await Test.createTestingModule({
-    //   imports: [AppModule],
-    // }).compile()
-
-    // app = moduleFixture.createNestApplication()
-    // await app.init()
+    const server = await Server.create()
+    app = server.getExpressApp()
   })
 
-  it('/ (GET)', () => {
-    // return request(app.getHttpServer())
-    //   .get('/')
-    //   .expect(200)
-    //   .expect('Hello World!')
+  it('/ (GET)', async (done) => {
+    const response = await request(app)
+      .post('/graphql')
+      .set('Accept', 'application/json')
+      .send({
+        query: `
+      {
+        hello
+      }
+    `,
+      })
+      .expect('Content-Type', /json/)
+      .expect(200)
+    expect(response.body.data).toEqual({ hello: 'HELLO' })
+    done()
   })
 })

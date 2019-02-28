@@ -4,6 +4,7 @@ volumes:
   redis-data:
   mongo-data:
   postgres-data:
+  postgres-e2e-data:
 
 services:
 
@@ -33,9 +34,23 @@ services:
       - "5432:5432"
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
-      # POSTGRES_USER: "test"
-      # POSTGRES_PASSWORD: "test"
-      # POSTGRES_DB: "test"
+      POSTGRES_USER: "test"
+      POSTGRES_PASSWORD: "test"
+      POSTGRES_DB: "test"
+
+  postgres-e2e:
+    image: postgres
+    restart: always
+    volumes:
+      - postgres-e2e-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5433:5433"
+    command: postgres -p 5433
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata2
+      POSTGRES_USER: "e2e"
+      POSTGRES_PASSWORD: "e2e"
+      POSTGRES_DB: "e2e"
 
   redis:
     image: redis:4.0.5-alpine

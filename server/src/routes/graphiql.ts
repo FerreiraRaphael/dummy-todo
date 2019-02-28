@@ -1,8 +1,8 @@
 /* tslint:disable:max-line-length */
 import { graphiqlExpress } from 'apollo-server-express'
 import { Router } from 'express'
-import { calculateToken } from 'src/shared/helpers/express'
 import * as url from 'url'
+import { calculateToken } from '../../src/shared/helpers/express'
 
 interface ICreateGraphiQlRouteInput {
   graphQlPath: string

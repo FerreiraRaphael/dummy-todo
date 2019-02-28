@@ -1,4 +1,4 @@
-import { defaultFieldResolver, GraphQLField } from 'graphql'
+import { defaultFieldResolver } from 'graphql'
 import { SchemaDirectiveVisitor } from 'graphql-tools'
 import { GraphqlContext } from 'src/graphql/context'
 import { UserDomain } from '../user/domain'

@@ -1,5 +1,5 @@
 import { Container } from 'inversify'
-import { AuthDomain, LoginInput } from 'src/core/auth/domain'
+import { AuthDomain, LoginInput } from '../../../src/core/auth/domain'
 import { GraphqlContext } from '../context'
 
 const authDomain = (container: Container) => container.get(AuthDomain)

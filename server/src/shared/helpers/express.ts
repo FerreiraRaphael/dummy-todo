@@ -1,8 +1,8 @@
 import * as express from 'express'
 import { Container } from 'inversify'
-import { AuthService } from 'src/core/auth/service'
-import User from 'src/core/user/entity'
-import { UserService } from 'src/core/user/service'
+import { AuthService } from '../../core/auth/service'
+import { User } from '../../core/user/entity'
+import { UserService } from '../../core/user/service'
 
 export const calculateToken = (req: express.Request) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
@@ -13,11 +13,14 @@ export const calculateToken = (req: express.Request) => {
   return ''
 }
 
-export function createCurrentUserFunction(req, container: Container): () => Promise<User> {
+export function createCurrentUserFunction(
+  req: express.Request,
+  container: Container,
+): () => Promise<User> {
   return () => (req.user ? container.get(UserService).findUserBy({ id: req.user.id }) : null)
 }
 
-export async function addEncodeJwtInRequest(req, container: Container) {
+export async function addEncodeJwtInRequest(req: express.Request, container: Container) {
   const token = calculateToken(req)
   const user = await container.get(AuthService).verify(token)
   req.user = user

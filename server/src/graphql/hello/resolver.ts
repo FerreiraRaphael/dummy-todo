@@ -1,6 +1,6 @@
 import { Container } from 'inversify'
-import { HelloDomain } from 'src/core/hello/domain'
-import { pubsub } from 'src/shared/helpers/subscriptions'
+import { HelloDomain } from '../../../src/core/hello/domain'
+import { pubsub } from '../../../src/shared/helpers/subscriptions'
 import { GraphqlContext } from '../context'
 
 const helloDomain = (container: Container) => container.get(HelloDomain)

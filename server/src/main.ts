@@ -48,6 +48,10 @@ export class Server {
     this.expressApp = express()
   }
 
+  public getExpressApp() {
+    return this.expressApp
+  }
+
   public listen(port?: number) {
     const server = createServer(this.expressApp)
     return new Promise((res, rej) => {

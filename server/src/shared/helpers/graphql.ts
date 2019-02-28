@@ -2,8 +2,8 @@ import { Request } from 'express'
 import { makeExecutableSchema } from 'graphql-tools'
 import { Container } from 'inversify'
 import * as glue from 'schemaglue'
-import { bindCurrentUser } from 'src/core/container'
-import { schemaDirectives } from 'src/core/directives'
+import { bindCurrentUser } from '../../../src/core/container'
+import { schemaDirectives } from '../../../src/core/directives'
 import { createCurrentUserFunction } from './express'
 
 export async function createSchema() {
@@ -17,6 +17,6 @@ export async function createSchema() {
 
 export function createContext(req: Request, container: Container) {
   return {
-    container: bindCurrentUser(container, createCurrentUserFunction(req, container)),
+    container: bindCurrentUser(container, { get: createCurrentUserFunction(req, container) }),
   }
 }
